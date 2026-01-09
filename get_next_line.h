@@ -6,7 +6,7 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:25:09 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/08 11:29:16 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/09 11:44:54 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@
 # ifndef BUFFER_SIZE
 	#define BUFFER_SIZE 42
 # endif
+
+char	*ft_strjoin(char *s1, char *s2);
+int		ft_strchr(char *s, int c);
+char	*get_next_line(int fd);
+size_t	ft_strlen(char *str);
 
 #endif

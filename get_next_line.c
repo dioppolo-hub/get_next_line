@@ -6,7 +6,7 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:21:08 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/13 12:18:07 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/13 13:45:50 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,37 @@ static char	*get_last_line(char *str)
 	return (temp);
 }
 
+/* char *line(char *stat, char *buff, char *ret, int out)
+{
+	char	*temp;
+
+	if (ft_strchr(stat, '\n') < 0 && out < BUFFER_SIZE)
+		{
+			free(buff);
+			ret = get_last_line(stat);
+			free(stat);
+			stat = NULL;
+			return (ret);
+		}
+		ret = get_line(stat);
+		if (ret)
+		{
+			temp = ft_strdup(stat + ft_strlen(ret));
+			free(buff);
+			free(stat);
+			stat = temp;
+			return (ret);
+		}
+
+} */
+
 char	*get_next_line(int fd)
 {
 	char		*buff;
 	char		*ret;
 	static char	*stat = NULL;
 	int			out;
-	char 		*temp;
+	char		*temp;
 
 	out = 1;
 	while(out > 0)
@@ -106,7 +130,7 @@ char	*get_next_line(int fd)
 	return (NULL);
 } 
 
-/* int	main()
+int	main()
 {
 	int fd;
 	char *str;
@@ -122,4 +146,4 @@ char	*get_next_line(int fd)
 	free (str);
 	printf("\n");
 	close(fd);
-} */
+}

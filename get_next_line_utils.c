@@ -6,7 +6,7 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:24:39 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/09 12:33:51 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/13 12:10:39 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static char	*scorri_s(char *s1, char *s2,
 		i++;
 	}
 	newstr[i] = '\0';
+	free(s1);
 	return (newstr);
 }
 
@@ -58,8 +59,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t		i;
 	char		*newstr;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
 	lens1 = ft_strlen(s1);
 	lens2 = ft_strlen(s2);
 	tot = lens1 + lens2;
@@ -74,8 +77,34 @@ size_t	ft_strlen(char	*str)
 {
 	size_t	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
+}
+
+char	*ft_strdup(char *s)
+{
+	int		i;
+	int		len;
+	size_t	nmemb;
+	char	*dup;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	len = 0;
+	nmemb = ft_strlen(s);
+	dup = (char *)malloc((nmemb + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

@@ -6,7 +6,7 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:25:09 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/09 11:44:54 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/13 12:10:45 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*ft_strjoin(char *s1, char *s2);
 int		ft_strchr(char *s, int c);
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
+char	*ft_strdup(char *s);
 
 #endif

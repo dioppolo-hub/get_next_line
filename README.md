@@ -170,3 +170,37 @@ Verify compliance with:
 ```bash
 norminette
 ```
+
+# Bonus
+
+## Descrizione ✅
+- Questa repository include la **versione bonus** che supporta la lettura da **più file descriptor** contemporaneamente.
+- La funzione `get_next_line()` mantiene lo stato separato per ogni `fd`, permettendo chiamate intercalate su file diversi senza perdita di dati.
+
+## File aggiuntivi 🔧
+- `get_next_line_bonus.c`
+- `get_next_line_utils_bonus.c`
+- `get_next_line_bonus.h`
+
+## Come testare 💡
+- Compila includendo i file bonus:
+
+```bash
+gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 *.c get_next_line_bonus.c get_next_line_utils_bonus.c -o get_next_line_bonus
+```
+
+- Esempio di test (apri e leggi più file):
+
+```c
+int fd1 = open("file1.txt", O_RDONLY);
+int fd2 = open("file2.txt", O_RDONLY);
+char *line1 = get_next_line(fd1);
+char *line2 = get_next_line(fd2);
+// alterna le chiamate per verificare che lo stato di ciascun fd sia preservato
+```
+
+## Note implementative ⚠️
+- Usare una struttura dati (es. lista o array dinamico) per mantenere lo stato associato a ciascun `fd`.
+- Assicurarsi di liberare la memoria relativa a un `fd` quando viene raggiunto EOF o il file viene chiuso.
+- Verificare che i file bonus rispettino la **Norminette** e gli stessi vincoli di stile del progetto principale.
+

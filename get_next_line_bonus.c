@@ -6,7 +6,7 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:26:53 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/14 13:37:45 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/14 13:47:25 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,20 +114,61 @@ char	*get_next_line(int fd)
 	return (NULL);
 }
 
-/* int	main()
+/*
+	int main(int argc, char **argv)
 {
-	int fd;
-	char *str;
+    int     i;
+    int     *fds;
+    int     active;
+    char    *line;
 
-	fd = open("test.txt", O_RDONLY); //"nxtlinesfabitest/files/panna.txt"
-	str = get_next_line(fd);
-	while (str)
-	{
-		printf("%s", str);
-		free (str);
-		str = get_next_line(fd);
-	}
-	free (str);
-	printf("\n");
-	close(fd);
+    if (argc < 2)
+    {
+        fprintf(stderr, "Usage: %s file1 [file2 ...]\n", argv[0]);
+        return (1);
+    }
+    fds = malloc(sizeof(int) * (argc - 1));
+    if (!fds)
+        return (1);
+    i = 0;
+    while (i < argc - 1)
+    {
+        fds[i] = open(argv[i + 1], O_RDONLY);
+        if (fds[i] < 0)
+            perror(argv[i + 1]);
+        i++;
+    }
+    active = 0;
+    i = 0;
+    while (i < argc - 1)
+    {
+        if (fds[i] >= 0)
+            active++;
+        i++;
+    }
+    while (active > 0)
+    {
+        i = 0;
+        while (i < argc - 1)
+        {
+            if (fds[i] >= 0)
+            {
+                line = get_next_line(fds[i]);
+                if (line)
+                {
+                    printf("fd %d: %s", fds[i], line);
+                    free(line);
+                }
+                else
+                {
+                    close(fds[i]);
+                    fds[i] = -1;
+                    active--;
+                }
+            }
+            i++;
+        }
+    }
+    free(fds);
+    return (0);
 } */

@@ -6,20 +6,20 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:21:08 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/13 13:45:50 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:01:34 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*get_line(char *str)
+char	*get_line(char *str)
 {
 	int		pos;
 	int		i;
 	char	*temp;
 
 	pos = ft_strchr(str, '\n');
-	if(pos < 0)
+	if (pos < 0)
 		return (NULL);
 	temp = (char *)malloc((pos + 2) * sizeof(char));
 	if (!temp)
@@ -31,10 +31,10 @@ static char	*get_line(char *str)
 		i++;
 	}
 	temp[i] = '\0';
-	return(temp);
+	return (temp);
 }
 
-static char	*get_last_line(char *str)
+char	*get_last_line(char *str)
 {
 	int		pos;
 	int		i;
@@ -55,7 +55,6 @@ static char	*get_last_line(char *str)
 		i++;
 	}
 	temp[i] = '\0';
-	//free(str);
 	return (temp);
 }
 
@@ -92,7 +91,7 @@ char	*get_next_line(int fd)
 	char		*temp;
 
 	out = 1;
-	while(out > 0)
+	while (out > 0)
 	{
 		buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 		if (!buff)
@@ -128,9 +127,9 @@ char	*get_next_line(int fd)
 		free(buff);
 	}
 	return (NULL);
-} 
+}
 
-int	main()
+/* int	main()
 {
 	int fd;
 	char *str;
@@ -146,4 +145,4 @@ int	main()
 	free (str);
 	printf("\n");
 	close(fd);
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: dioppolo <dioppolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 09:24:39 by dioppolo          #+#    #+#             */
-/*   Updated: 2026/01/14 10:59:20 by dioppolo         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:53:42 by dioppolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*scorri_s(char *s1, char *s2,
 	return (newstr);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, int out)
 {
 	size_t		lens1;
 	size_t		lens2;
@@ -59,6 +59,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t		i;
 	char		*newstr;
 
+	s2[out] = '\0';
 	if (!s2)
 		return (NULL);
 	if (!s1)
